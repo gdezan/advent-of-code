@@ -1,7 +1,5 @@
 defmodule Day1 do
-  def part1 do
-    input = File.read!("lib/day1.txt")
-
+  def part1(input) do
     input
     |> String.split("\n", trim: true)
     |> Enum.map(fn x ->
@@ -15,9 +13,7 @@ defmodule Day1 do
     |> Enum.sum()
   end
 
-  def part2 do
-    input = File.read!("lib/day1.txt")
-
+  def part2(input) do
     values = %{
       "one" => "1",
       "two" => "2",
@@ -57,5 +53,16 @@ defmodule Day1 do
   end
 end
 
-IO.puts(Day1.part1())
-IO.puts(Day1.part2())
+defmodule Mix.Tasks.Day1 do
+  use Mix.Task
+
+  @shortdoc "Day 1"
+  def run(_) do
+    input = File.read!("inputs/day1.txt")
+
+    IO.puts("--- Part 1 ---")
+    IO.puts(Day1.part1(input))
+    IO.puts("\n--- Part 2 ---")
+    IO.puts(Day1.part2(input))
+  end
+end
